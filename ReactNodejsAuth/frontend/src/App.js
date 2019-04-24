@@ -9,6 +9,7 @@ import {Helmet} from 'react-helmet';
 //import logo from './images/mwaredetec.jpg';
 //import anime from 'animejs/lib/anime.es.js';
 //import Test from './test'
+import dashboard from '../src/layouts/Admin'
 
 import Navbar from './components/Navbar';
 import Register from './components/Register';
@@ -43,6 +44,7 @@ class App extends Component {
                 <Route exact path="/" component={ Home } />
                 {/* //<Test /> */}
                 <div className="container">
+                  <Route exact path="/dashboard" component={ dashboard } />
                   <Route exact path="/register" component={ Register } />
                   <Route exact path="/login" component={ Login } />
                 </div>
