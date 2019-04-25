@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from './store';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from './setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authentication';
-import {Helmet} from 'react-helmet';
+// import {Helmet} from 'react-helmet';
 //import logo from './images/mwaredetec.jpg';
 //import anime from 'animejs/lib/anime.es.js';
 //import Test from './test'
