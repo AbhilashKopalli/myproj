@@ -18,7 +18,7 @@ class AppRouter extends Component {
           <div>
             <Navbar />
             <Route exact path="/" component={Home} />
-            <div className="container">
+            <div >
               <PrivateRoute exact path="/dashboard" component={dashboard} />
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
