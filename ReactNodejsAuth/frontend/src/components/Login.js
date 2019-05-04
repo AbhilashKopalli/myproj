@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions/authentication';
 import classnames from 'classnames';
 import Button from "@material-ui/core/Button";
+import {Helmet} from 'react-helmet';
 
 class Login extends Component {
 
@@ -37,6 +38,7 @@ class Login extends Component {
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
+
     }
 
     componentWillReceiveProps(nextProps) {
@@ -54,7 +56,11 @@ class Login extends Component {
         const {errors} = this.state;
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
-            <h2 style={{marginBottom: '40px'}}>Login</h2>
+            <Helmet>
+            <style>{'body { background-color: white; }'}</style>
+            </Helmet>
+            <br/>
+            <h2 style={{marginBottom: '40px', color: 'blue'}}>Login</h2>
             <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
                     <input
@@ -86,8 +92,12 @@ class Login extends Component {
                     <Button variant="contained" color="primary" type="submit" className="btn btn-primary">
                         Login User
                     </Button>
+                    <br/> <br/>
                 </div>
             </form>
+            <div style={{position: "absolute", bottom: "5px", right: "5px",color: "black",textAlign: "right"}}>
+    Spring 2019, CMPE-272 Team 21
+    </div>
         </div>
         )
     }

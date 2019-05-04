@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import { red } from '@material-ui/core/colors';
-import logo from '../images/mwaredetec.jpg';
+// import logo from '../images/mwaredetec.jpg';
 // import anime from 'animejs/lib/anime.es';
 //import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import  { Parallax,ParallaxProvider } from 'react-scroll-parallax';
+// import  { Parallax,ParallaxProvider } from 'react-scroll-parallax';
 import Images from './parallax';
+
+
+
+
+// const styles = {
+//     bounce: {
+//       animation: 'x 1s',
+//       animationName: Radium.keyframes(bounce, 'bounce')
+//     }
+//   }
+
 
 export default class Home extends Component {
     constructor(props) {
@@ -32,14 +43,6 @@ export default class Home extends Component {
 
     render() {
 
-        var sectionStyle = {
-            width: "100%",
-            height: "1000px",
-            minHeight: "100%" ,
-            backgroundImage: `url(${logo})`
-          };
-          
-
         return (
             // <ParallaxProvider>
             <div style={{backgroundColor:red }}>
@@ -52,6 +55,12 @@ export default class Home extends Component {
             {/* <Parallax className="custom-class" y={[-20, 20]} tagOuter="figure" > */}
             {/* <img  style={sectionStyle}/> */}
             <Images />
+            {/* test
+            <StyleRoot>
+      <div className="test" style={styles.bounce}>
+      test1
+      </div>
+    </StyleRoot> */}
             {/* </Parallax> */}
             </div>
             // </ParallaxProvider>

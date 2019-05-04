@@ -5,13 +5,18 @@ import { withRouter } from 'react-router-dom';
 import { registerUser } from '../actions/authentication';
 import classnames from 'classnames';
 import Button from "@material-ui/core/Button";
+import  { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import GoogleLogin from 'react-google-login';
+import ReactDOM from 'react-dom';
+import FacebookLogin from 'react-facebook-login';
 
 class Register extends Component {
 
     constructor() {
         super();
         this.state = {
-            name: '',
+            name: '',   
             email: '',
             password: '',
             password_confirm: '',
@@ -19,6 +24,15 @@ class Register extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        // e.preventDefault();
+        console.log('The link was clicked.');
+        toast("Wow so easy !");
+        toast("Hi there !", {position: toast.POSITION.TOP_LEFT});
+        toast("Hello", { autoClose: false })
     }
 
     handleInputChange(e) {
@@ -47,16 +61,32 @@ class Register extends Component {
                 errors: nextProps.errors
             });
         }
+        toast("Wow so easy !");
     }
 
     componentDidMount() {
+        console.log("hello")
+        toast("Wow so easy !");
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
+
+        toast("Wow so easy !");
+        toast("Hi there !", {position: toast.POSITION.TOP_LEFT});
+        toast("Hello", { autoClose: false })
     }
 
     render() {
         const { errors } = this.state;
+
+        const responseFacebook = (response) => {
+            console.log(response);
+          }
+
+          const responseGoogle = (response) => {
+            console.log(response);
+          }
+          
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
@@ -119,6 +149,24 @@ class Register extends Component {
                     </Button>
                 </div>
             </form>
+            {/* <div> <button onClick={this.handleClick}>My Awesome Button</button> <ToastContainer /> </div>  */}
+            {/* <div> <button onLoad={this.handleClick}>My Awesome Button</button> <ToastContainer /> </div> */}
+            <div style={{position: "absolute", bottom: "5px", right: "5px",color: "black",textAlign: "right"}}>
+    Spring 2019, CMPE-272 Team 21 </div>
+    <FacebookLogin
+    appId="602405340241247"
+    autoLoad={true}
+    fields="name,email,picture"
+    // onClick={componentClicked}
+    callback={responseFacebook} />,
+      <GoogleLogin
+    clientId="1068075770755-cdqdnjh9to2dqs0a5t2qpnrlphlhbcn9.apps.googleusercontent.com"
+    buttonText="Login"
+    onSuccess={responseGoogle}
+    onFailure={responseGoogle}
+    cookiePolicy={'single_host_origin'}
+  />,
+
         </div>
         )
     }
