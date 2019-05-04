@@ -8,6 +8,7 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 //import anime from 'animejs/lib/anime.es.js';
 //import Test from './test'
 
+import "./assets/scss/material-kit-react.scss?v=1.4.0";
 import AppRouter from './routers/AppRouter'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
