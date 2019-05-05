@@ -1,33 +1,42 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import dashboard from '../layouts/Admin';
-
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import routes from "../routes.js";
 import Navbar from '../components/Navbar';
 import Register from '../components/Register';
 import Login from '../components/Login';
 import Home from '../components/Home';
 import LoginNew from '../views/LoginPage/LoginPage';
-import PrivateRoute from './PrivateRoute';
-
+import Admin from '../layouts/Admin.jsx'
 class AppRouter extends Component {
   render() {
-    return (
-      <div>
-        <Router>
-          <div>
-            <Navbar />
-            <Route exact path="/" component={Home} />
-            <div >
-              <PrivateRoute exact path="/dashboard" component={dashboard} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/loginNew" component={LoginNew} />
-            </div>
-          </div>
-        </Router>
-      </div>
-    );
+    if (localStorage.getItem("jwtToken") != null)
+      return (isLoggedIn)
+    else
+      return (isLoggedOut)
   }
 }
+
+const isLoggedOut = (
+  <Router>
+    <div>
+      <Navbar />
+      <Route exact path="/" component={Home} />
+      <Route path="/register" component={Register} />
+      <Route path="/login" component={Login} />
+      <Route path="/loginNew" component={LoginNew} />
+    </div>
+  </Router>
+)
+const isLoggedIn = (
+
+  <Router >
+    <Switch>
+      <Route path="/admin" component={Admin} />
+      <Redirect from="/" to="/admin/dashboard" />
+
+
+    </Switch>
+  </Router >
+
+)
 export default AppRouter;
