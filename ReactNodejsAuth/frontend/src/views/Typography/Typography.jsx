@@ -62,7 +62,7 @@ class TypographyPage extends React.Component {
     fetch('/upload', {
       method: 'POST',
       body: formData
-    }).then( res => res.json())
+    }).then( res => JSON.stringify(res))
       .then(t => {
         console.log(t);
         toast.error(t.file, {

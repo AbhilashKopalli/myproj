@@ -40,20 +40,21 @@ app.post('/upload', (req, res, next) => {
   })
   let imageFile = req.files.file
 
-  imageFile.mv(`${__dirname}/public/${req.files.file.name}.txt`, function (err) {
+  imageFile.mv(`${__dirname}/public/${req.files.file.name}`, function (err) {
     if (err) {
       return res.status(500).send(err);
     }
-    //callName(`${__dirname}/public/${req.body.filename}.txt`)
-    res.json({ file: 'Success' });
+    callName(res)
+    
   });
 
 })
-function callName(path) {
+function callName(res) {
   var spawn = require("child_process").spawn;
-  var process = spawn('python', ["./hello.py", path]);
+  var process = spawn('python', ["./hello.py"]);
   process.stdout.on('data', function (data) {
-    res.send(data.toString());
+    console.log(data);
+    res.json(data.toString());
   })
 }
 app.get('/', function (req, res) {
