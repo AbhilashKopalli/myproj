@@ -4,6 +4,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Card from "../../components/Card/Card.jsx";
 import CardHeader from "../../components/Card/CardHeader.jsx";
 import Button from "@material-ui/core/Button/";
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { toast } from 'react-toastify';
 const style = {
   typo: {
     paddingLeft: "25%",
@@ -45,7 +47,8 @@ class TypographyPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      file:null
+      file: null,
+      loading: false
     }
     this.onClick = this.onClick.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -54,34 +57,49 @@ class TypographyPage extends React.Component {
     e.preventDefault();
     const files = this.state.file
     const formData = new FormData()
-    formData.append('file',files)
-
+    formData.append('file', files)
+    this.setState({ loading: true })
     fetch('/upload', {
       method: 'POST',
       body: formData
-    })
-      .then(res => res.json())
-      .then(t => console.log(t))
+    }).then( res => res.json())
+      .then(t => {
+        console.log(t);
+        toast.error(t.file, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true
+        });
+      })
+      .then(() => {
+        this.setState({ loading: false })
+      })
+
   }
   onChange(e) {
-    this.setState({file:e.target.files[0]})
+    this.setState({ file: e.target.files[0] })
   }
   render() {
     const { classes } = this.props;
     return (
-      <Card style={{ alignItems: 'center', paddingTop: '10%' }}>
-        <CardHeader color="primary">
-          <h4 className={classes.cardTitleWhite}>Material Dashboard Heading</h4>
-          <p className={classes.cardCategoryWhite}>
-            <form onSubmit={this.onClick}>
-              <input type='file' id='multi' onChange={this.onChange} />
-              <Button type="Submit" > Upload</Button>
-            </form>
-          </p>
+      this.state.loading === true ? <CircularProgress size='40' color='primary' /> :
+        <Card style={{ alignItems: 'center', paddingTop: '10%' }}>
+          <CardHeader color="primary">
+            <h4 className={classes.cardTitleWhite}>File Upload</h4>
+            <p className={classes.cardCategoryWhite}>
+              <form onSubmit={this.onClick}>
+                <input type='file' id='multi' onChange={this.onChange} />
+                <Button type="Submit"> Click to Upload </Button>
+              </form>
+            </p>
         </CardHeader>
-      </Card>
+        </Card>
     )
   }
 }
+
 
 export default withStyles(style)(TypographyPage);

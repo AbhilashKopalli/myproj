@@ -10,7 +10,7 @@ import { setCurrentUser, logoutUser } from './actions/authentication';
 
 import "./assets/scss/material-kit-react.scss?v=1.4.0";
 import AppRouter from './routers/AppRouter'
-
+import {ToastContainer} from 'react-toastify'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 if (localStorage.jwtToken) {
@@ -30,6 +30,17 @@ class App extends Component {
     return (
       <div>
         <AppRouter />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
       </div>
     );
   }
