@@ -1,5 +1,6 @@
 // @material-ui/icons
 import Dashboard from "@material-ui/icons/Dashboard";
+import Home from "@material-ui/icons/Home";
 import Person from "@material-ui/icons/Person";
 import LibraryBooks from "@material-ui/icons/LibraryBooks";
 import BubbleChart from "@material-ui/icons/BubbleChart";
@@ -9,6 +10,7 @@ import Unarchive from "@material-ui/icons/Unarchive";
 // import Language from "@material-ui/icons/Language";
 // core components/views for Admin layout
 import DashboardPage from './views/Dashboard/Dashboard.jsx';
+import DashboardHomePage from './views/Dashboard/Home.jsx';
 import UserProfile from "./views/UserProfile/UserProfile.jsx";
 // import TableList from "./views/TableList/TableList.jsx";
 import Typography from "./views/Typography/Typography.jsx";
@@ -21,6 +23,13 @@ import { logoutUser } from "./actions/authentication.js";
 // import RTLPage from "./views/RTLPage/RTLPage.jsx";
 
 const dashboardRoutes = [
+  {
+    path: "/dashboard",
+    name: "Home",
+    icon: Home,
+    component: DashboardHomePage,
+    layout: "/admin"
+  },
   {
     path: "/models",
     name: "Models",
