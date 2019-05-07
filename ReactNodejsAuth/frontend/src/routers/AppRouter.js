@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import routes from "../routes.js";
 import Navbar from '../components/Navbar';
+import Typography from '../views/Typography/Typography.jsx';
 import Register from '../components/Register';
 import Login from '../components/Login';
 import Home from '../components/Home';
@@ -24,6 +25,7 @@ const isLoggedOut = (
       <Route path="/register" component={Register} />
       <Route path="/login" component={Login} />
       <Route path="/loginNew" component={LoginNew} />
+      <Route path="/admin/file-upload" component={Typography} />
     </div>
   </Router>
 )
