@@ -29,6 +29,15 @@ import CardHeader from "../../components/Card/CardHeader.jsx";
 import CardIcon from "../../components/Card/CardIcon.jsx";
 import CardBody from "../../components/Card/CardBody.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
+import knn_acc from "./Knn_accuracy.PNG";
+import knn_con from "./Knn_confusion Matrix.PNG";
+import knn_rec from "./Knn_recall.PNG";
+import log_acc from "./log_accuracy.PNG";
+import log_con from "./log_confusion.PNG";
+import log_rec from "./log_recall.PNG";
+import random_acc from "./RandomForest_confusion matrix.PNG";
+import random_prec from "./RandomForest_precision.PNG";
+import random_rec from "./RandomForest_recall.PNG"
 
 import { bugs, website, server } from "../../variables/general.jsx";
 
@@ -54,223 +63,154 @@ class Dashboard extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <GridContainer>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="warning" stats icon>
-                <CardIcon color="warning">
-                  <Icon>content_copy</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Used Space</p>
-                <h3 className={classes.cardTitle}>
-                  49/50 <small>GB</small>
-                </h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Danger>
-                    <Warning />
-                  </Danger>
-                  <a href="#pablo" onClick={e => e.preventDefault()}>
-                    Get more space
-                  </a>
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="success" stats icon>
-                <CardIcon color="success">
-                  <Store />
-                </CardIcon>
-                <p className={classes.cardCategory}>Revenue</p>
-                <h3 className={classes.cardTitle}>$34,245</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <DateRange />
-                  Last 24 Hours
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="danger" stats icon>
-                <CardIcon color="danger">
-                  <Icon>info_outline</Icon>
-                </CardIcon>
-                <p className={classes.cardCategory}>Fixed Issues</p>
-                <h3 className={classes.cardTitle}>75</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <LocalOffer />
-                  Tracked from Github
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={6} md={3}>
-            <Card>
-              <CardHeader color="info" stats icon>
-                <CardIcon color="info">
-                  <Accessibility />
-                </CardIcon>
-                <p className={classes.cardCategory}>Followers</p>
-                <h3 className={classes.cardTitle}>+245</h3>
-              </CardHeader>
-              <CardFooter stats>
-                <div className={classes.stats}>
-                  <Update />
-                  Just Updated
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="success">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={dailySalesChart.data}
-                  type="Line"
-                  options={dailySalesChart.options}
-                  listener={dailySalesChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Daily Sales</h4>
-                <p className={classes.cardCategory}>
-                  <span className={classes.successText}>
-                    <ArrowUpward className={classes.upArrowCardCategory} /> 55%
-                  </span>{" "}
-                  increase in today sales.
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> updated 4 minutes ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="warning">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={emailsSubscriptionChart.data}
-                  type="Bar"
-                  options={emailsSubscriptionChart.options}
-                  responsiveOptions={emailsSubscriptionChart.responsiveOptions}
-                  listener={emailsSubscriptionChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Email Subscriptions</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-          <GridItem xs={12} sm={12} md={4}>
-            <Card chart>
-              <CardHeader color="danger">
-                <ChartistGraph
-                  className="ct-chart"
-                  data={completedTasksChart.data}
-                  type="Line"
-                  options={completedTasksChart.options}
-                  listener={completedTasksChart.animation}
-                />
-              </CardHeader>
-              <CardBody>
-                <h4 className={classes.cardTitle}>Completed Tasks</h4>
-                <p className={classes.cardCategory}>
-                  Last Campaign Performance
-                </p>
-              </CardBody>
-              <CardFooter chart>
-                <div className={classes.stats}>
-                  <AccessTime /> campaign sent 2 days ago
-                </div>
-              </CardFooter>
-            </Card>
-          </GridItem>
-        </GridContainer>
-        <GridContainer>
-          <GridItem xs={12} sm={12} md={6}>
-            <CustomTabs
-              title="Tasks:"
-              headerColor="primary"
-              tabs={[
-                {
-                  tabName: "Bugs",
-                  tabIcon: BugReport,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0, 3]}
-                      tasksIndexes={[0, 1, 2, 3]}
-                      tasks={bugs}
-                    />
-                  )
-                },
-                {
-                  tabName: "Website",
-                  tabIcon: Code,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[0]}
-                      tasksIndexes={[0, 1]}
-                      tasks={website}
-                    />
-                  )
-                },
-                {
-                  tabName: "Server",
-                  tabIcon: Cloud,
-                  tabContent: (
-                    <Tasks
-                      checkedIndexes={[1]}
-                      tasksIndexes={[0, 1, 2]}
-                      tasks={server}
-                    />
-                  )
-                }
-              ]}
-            />
-          </GridItem>
-          <GridItem xs={12} sm={12} md={6}>
+      <div style={{backgroundColor: "black", color: "white"}}>
+         <GridContainer>
+
+          <GridItem xs={20} sm={20} md={12}>
             <Card>
               <CardHeader color="warning">
-                <h4 className={classes.cardTitleWhite}>Employees Stats</h4>
-                <p className={classes.cardCategoryWhite}>
+                <h4 className={classes.cardTitleWhite}>Information About the Classes</h4>
+                {/* <p className={classes.cardCategoryWhite}>
                   New employees on 15th September, 2016
-                </p>
+                </p> */}
               </CardHeader>
               <CardBody>
                 <Table
                   tableHeaderColor="warning"
-                  tableHead={["ID", "Name", "Salary", "Country"]}
+                  tableHead={["ID", "Class Name", "Class Description"]}
                   tableData={[
-                    ["1", "Dakota Rice", "$36,738", "Niger"],
-                    ["2", "Minerva Hooper", "$23,789", "Curaçao"],
-                    ["3", "Sage Rodriguez", "$56,142", "Netherlands"],
-                    ["4", "Philip Chaney", "$38,735", "Korea, South"]
+                    ["1", "Ramnit", "W32/  Ramnit  .N  is  distributed  in  infected  EXE,  DLL  and  HTML  files;  it  can  also  be  distributed via removable drives.Once  active,  the  virus  infects  EXE,  DLL  and  HTML  files  found  on  the  computer. It  will  also  drop  a  malicious  file  that  attempts  to  connect  to  and  download  other  files  from  a  remote  server."],
+                    ["2", "Lollipop",  "The Lollipop.exe file is a software component of Lollipop by Lollipop Network, S.L. \"Lollipop.exe\"  ,identified in Microsoft  '  s Threat Encyclopedia as \"Adware : Win32/Lollipop\" and  \ by Symantec as \" Trojan.Gen.2\", is adware by Lollipop Network"],
+                    ["3", "Kelihos_ver3", "Kelihos  malware  is  often  dropped  and  installed  as  the  payload  of  other  malware,  such  as  trojan-downloaders.  Some  variants  are  also  distributed  via  links  to  malicious  websites  that  are   circulated  through  the  Facebook  social  network."],
+                    ["4", "Vundo",  "The adware is normally downloaded by users from the websites  ; these malicious sites are normally promoted by spam emails. The Vundo family is often distributed as DLL files. It is known to be bundled with adware and/or spyware programs."],
+                    ["5", "Simbda",  "Backdoor  :W32/Simda was first seen in 2009, and has since rapidly expanded into a large family of malware with a wide range of capabilities  . Early variants focused primarily on stealing passwords and other data from infected machines. In 2013, Simda was reportedly found being used as a banking trojan (primarily targeting banks in Russia and Europe)"],
+                    ["6", "Tracur", "Win32/Tracur is a family of trojans that can redirect your web searches. They do this to earn revenue for the malware authors via online advertisement fraud. The trojans hijack search result links from the few search engines, and redirect you to a different webpage"],
+                    ["7", "Kelihos_ver1", "The Kelihos botnet, also known as Hlux, is a botnet mainly involved in spamming and the theft of bitcoins"],
+                    ["8", "Obfuscator.ACY",  "This threat has been obfuscated, which means it has tried to hide its purpose so your security software doesn't detect it.The malware that lies underneath this obfuscation can have almost any purpose."],
+                    ["9", "Gatak",  "This trojan gathers information about your PC and sends it to a hacker.It can arrive on your PC as part of a key generator application, or by appearing to be an update for a legitimate application."]
                   ]}
                 />
               </CardBody>
+            </Card>
+          </GridItem>
+        </GridContainer>
+        
+        
+        
+        
+        <h4 style={{textAlign: "center"}}><u> KNN Model</u> </h4>
+        <GridContainer>
+          <GridItem xs={17} sm={17} md={6}>
+          <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;KNN Model Accuracy</h4>
+                <img  src={knn_acc}  />
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          <GridItem xs={15} sm={15} md={6}>
+ <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;KNN Confusion Matrix</h4>
+                <br /><img  src={knn_con}  />
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          {/* <GridItem xs={12} sm={12} md={4}>
+           <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;KNN Recall Matrix</h4>
+                <img  src={knn_rec}  />
+              <CardFooter chart>
+                {/* <div className={classes.stats}>
+                  <AccessTime /> campaign sent 2 days ago
+                </div> */}
+              {/* </CardFooter>
+            </Card>
+          </GridItem> */} 
+        </GridContainer>
+        <br />
+    <h4 style={{textAlign: "center"}}><u> Logistic Regression Model</u> </h4>
+
+        <GridContainer>
+          <GridItem xs={17} sm={17} md={6}>
+          <Card>
+    <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;Logistic Regression Model Accuracy</h4>
+
+                <img  src={log_acc}  />
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          <GridItem xs={15} sm={15} md={6}>
+ <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;Logistic Regression Confusion Matrix</h4>
+              <img  src={log_con}  />
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+           <Card>
+            {/* <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Logistic Regression Recall Matrix</h4>
+                <img  src={log_rec}  /> */}
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> campaign sent 2 days ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+        </GridContainer>
+
+      <h4 style={{textAlign: "center"}}><u> Random Forest Model</u> </h4>
+
+                <GridContainer>
+
+          <GridItem xs={17} sm={17} md={6}>
+          <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Random Forest Model Accuracy</h4>
+                <img  src={random_acc}  />
+ 
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          <GridItem xs={15} sm={15} md={6}>
+ <Card>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Random Forest Precision Matrix</h4>
+                <img  src={random_prec}  />
+
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> updated 4 minutes ago
+                </div> */}
+              {/* </CardFooter> */}
+            </Card>
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+           <Card>
+            {/* <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Random Forest Recall Matrix</h4>
+                <img  src={random_rec}  /> */}
+              {/* <CardFooter chart> */}
+                {/* <div className={classes.stats}>
+                  <AccessTime /> campaign sent 2 days ago
+                </div> */}
+              {/* </CardFooter> */}
             </Card>
           </GridItem>
         </GridContainer>

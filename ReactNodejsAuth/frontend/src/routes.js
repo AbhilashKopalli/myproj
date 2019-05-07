@@ -15,13 +15,15 @@ import Typography from "./views/Typography/Typography.jsx";
 import Icons from "./views/Icons/Icons.jsx";
 // import Maps from "./views/Maps/Maps.jsx";
 import NotificationsPage from "./views/Notifications/Notifications.jsx";
+import { Description } from "@material-ui/icons";
+import { logoutUser } from "./actions/authentication.js";
 // core components/views for RTL layout
 // import RTLPage from "./views/RTLPage/RTLPage.jsx";
 
 const dashboardRoutes = [
   {
-    path: "/dashboard",
-    name: "Dashboard",
+    path: "/models",
+    name: "Models",
     icon: Dashboard,
     component: DashboardPage,
     layout: "/admin"
@@ -51,6 +53,13 @@ const dashboardRoutes = [
     path: "/notifications",
     name: "Notifications",
     icon: Notifications,
+    component: NotificationsPage,
+    layout: "/admin"
+  },
+  {
+    path: "/signout",
+    name: "signout",
+    icon: logoutUser,
     component: NotificationsPage,
     layout: "/admin"
   }
