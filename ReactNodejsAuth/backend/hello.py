@@ -198,7 +198,9 @@ predict_y = model.predict(Final_prep_data)
 # print('{\"file\" : \"This file belongs to Malware class :\",predict_y[0]')
 
 x = {
+
     "file": "This file belongs to Malware Class" + " " + str(predict_y[0])
+
 }
 
 print(json.dumps(x))

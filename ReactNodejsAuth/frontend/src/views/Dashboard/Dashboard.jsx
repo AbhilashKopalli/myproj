@@ -49,6 +49,9 @@ import {
 
 import dashboardStyle from "../../assets/jss/material-dashboard-react/views/dashboardStyle";
 
+
+
+
 class Dashboard extends React.Component {
   state = {
     value: 0
@@ -60,6 +63,13 @@ class Dashboard extends React.Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
+ 
+ componentWillMount() {
+<h2>Hi</h2>
+}
+
+
+
   render() {
     const { classes } = this.props;
     return (
