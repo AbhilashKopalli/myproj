@@ -63,7 +63,7 @@ class Notifications extends React.Component {
     }).then(res => res.json())
       .then((e) => {
         var temp = [];
-        e.forEach((a) => temp.push([a.id, a.name, a.date]))
+        e.forEach((a) => temp.push([a._id, a.name, a.date]))
         this.setState({
         uploads: temp,
         error: false

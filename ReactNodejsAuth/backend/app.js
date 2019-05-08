@@ -6,6 +6,7 @@ const config = require('./db');
 const jwt_decode =  require('jwt-decode');
 const fileUpload = require('express-fileupload');
 const UploadHistory = require('./models/UploadHistory');
+const path = require('path');
 
 var multer = require('multer')
 var storage = multer.diskStorage({
@@ -26,6 +27,8 @@ mongoose.connect(config.DB, { useNewUrlParser: true }).then(
 );
 
 const app = express();
+console.log(__dirname);
+app.use(express.static(path.join(__dirname, 'build')))
 app.use(passport.initialize());
 require('./passport')(passport);
 app.use(fileUpload());
@@ -41,6 +44,9 @@ app.post('/upload', (req, res, next) => {
       return res.status(500).json(err)
     }
   })
+
+  app.use(express.static(path.join(__dirname, 'client/build')))
+
   let imageFile = req.files.file
 
   imageFile.mv(`${__dirname}/public/${req.files.file.name}`, function (err) {

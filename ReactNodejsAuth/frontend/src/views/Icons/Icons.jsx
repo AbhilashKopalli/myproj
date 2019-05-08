@@ -45,14 +45,14 @@ function Icons(props) {
 
 <h4> Introduction to Malware Analysis- Part 1 </h4>
 
-<iframe width="1000" height="500" src="https://www.youtube.com/embed/f-fMdnUW4X4?autoplay=1">
+<iframe width="1000" height="500" src="https://www.youtube.com/embed/f-fMdnUW4X4">
 </iframe>
 
 <br/> <br /> <br/> <br />
 
 <h4> Introduction to Malware Analysis- Part 2 </h4>
 
-<iframe width="1000" height="500" src="https://www.youtube.com/embed/_Mz8Pu-4WVw?autoplay=1">
+<iframe width="1000" height="500" src="https://www.youtube.com/embed/_Mz8Pu-4WVw">
 </iframe>
 
 </div>
