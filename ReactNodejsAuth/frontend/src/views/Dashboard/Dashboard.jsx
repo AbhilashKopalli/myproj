@@ -68,8 +68,6 @@ class Dashboard extends React.Component {
 <h2>Hi</h2>
 }
 
-
-
   render() {
     const { classes } = this.props;
     return (

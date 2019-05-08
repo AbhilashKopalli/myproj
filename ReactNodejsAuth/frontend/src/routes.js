@@ -58,13 +58,13 @@ const dashboardRoutes = [
     component: Icons,
     layout: "/admin"
   },
-  {
-    path: "/notifications",
-    name: "Notifications",
-    icon: Notifications,
-    component: NotificationsPage,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/notifications",
+  //   name: "Notifications",
+  //   icon: Notifications,
+  //   component: NotificationsPage,
+  //   layout: "/admin"
+  // },
   {
     path: "/signout",
     name: "signout",
