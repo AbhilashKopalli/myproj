@@ -3,7 +3,10 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./db');
+const jwt_decode =  require('jwt-decode');
 const fileUpload = require('express-fileupload');
+const UploadHistory = require('./models/UploadHistory');
+
 var multer = require('multer')
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -44,10 +47,40 @@ app.post('/upload', (req, res, next) => {
     if (err) {
       return res.status(500).send(err);
     }
-    callName(res)
-    
+    writeToUploadHistory(req, req.files.file.name);
+    callName(res);
   });
 
+})
+function writeToUploadHistory(req, fileName){
+    var a = jwt_decode(req.headers.authorization.replace("Bearer ",""));
+    var temp = new UploadHistory({
+      id: a.id,
+      name: fileName
+    });
+    temp.save(
+      function (err, book) {
+        if (err) return console.error(err);
+        console.log(book.name + " saved to Upload History collection.");
+      }
+    );
+}
+app.get('/uploadhistory', (req, res, next) => {
+  try{
+    jwt_decode(req.headers.authorization.replace("Bearer ","")).id;
+  }
+  catch(e){
+    return res.status(500).send(e);
+  }
+  var a = jwt_decode(req.headers.authorization.replace("Bearer ","")).id;
+  var temp = UploadHistory.find({
+    "id": ""+a
+  })
+  temp.exec(function (err, docs) {
+    if(err)
+      res.status(500).json({"error": err})
+    return res.json(docs)
+  })
 })
 function callName(res) {
   var spawn = require("child_process").spawn;

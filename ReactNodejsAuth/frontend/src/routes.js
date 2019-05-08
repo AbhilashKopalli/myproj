@@ -53,18 +53,18 @@ const dashboardRoutes = [
   },
   {
     path: "/history",
+    name: "Upload History",
+    icon: Notifications,
+    component: NotificationsPage,
+    layout: "/admin"
+  },
+  {
+    path: "/info",
     name: "Malware Info",
     icon: BubbleChart,
     component: Icons,
     layout: "/admin"
-  },
-  // {
-  //   path: "/notifications",
-  //   name: "Notifications",
-  //   icon: Notifications,
-  //   component: NotificationsPage,
-  //   layout: "/admin"
-  // },
+  }
 ];
 
 export default dashboardRoutes;

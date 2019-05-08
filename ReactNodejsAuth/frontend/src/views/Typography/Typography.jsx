@@ -10,6 +10,8 @@ import { toast } from 'react-toastify';
 import Loader from "react-loader-spinner";
 import CardBody from "../../components/Card/CardBody.jsx";
 import CardFooter from "../../components/Card/CardFooter.jsx";
+import Axios from "axios";
+
 // import Heat from "../heat.js";
 // import Pacman from 'pacman-react';
 // import Game from 'react-dinosaur-game';
@@ -95,7 +97,10 @@ class TypographyPage extends React.Component {
     this.setState({ loading: true })
     fetch('/upload', {
       method: 'POST',
-      body: formData
+      body: formData,
+      headers: {
+        "Authorization": localStorage.getItem("jwtToken")
+      },
     }).then(res => res.json())
       .then(te => JSON.parse(te))
       .then(t => {
