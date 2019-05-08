@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 const validateRegisterInput = require('../validation/register');
 const validateLoginInput = require('../validation/login');
+const validatePasswordChange = require('../validation/password-change');
 
 const User = require('../models/User');
 
@@ -108,6 +109,46 @@ router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) =
         name: req.user.name,
         email: req.user.email
     });
+});
+
+
+router.post('/change-password', passport.authenticate('jwt', { session: false }), (req, res) => {
+
+    const { errors, isValid } = validatePasswordChange(req.body);
+
+    if(!isValid) {
+        return res.status(400).json(errors);
+    }
+    const password = req.body.password;
+    const new_password = req.body.new_password;
+
+    if (req.user) {
+        // "password compare"
+        bcrypt.compare(password, req.user.password)
+        .then(isMatch => {
+            if(isMatch) {
+                bcrypt.genSalt(10, (err, salt) => {
+                    if(err) console.error('There was an error', err);
+                    else {
+                        bcrypt.hash(new_password, salt, (err, hash) => {
+                            if(err) console.error('There was an error', err);
+                            else {
+                                User.findOne({_id: req.user._id}).then(function(user){
+                                    user.password = hash
+                                    user.save()
+                                    return res.sendStatus(204);
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+            else {
+                errors.password = 'Incorrect Password';
+                return res.status(400).json(errors);
+            }
+        });
+    }
 });
 
 module.exports = router;
