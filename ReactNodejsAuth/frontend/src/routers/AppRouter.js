@@ -7,7 +7,8 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 import Home from '../components/Home';
 import LoginNew from '../views/LoginPage/LoginPage';
-import Admin from '../layouts/Admin.jsx'
+import Admin from '../layouts/Admin.jsx';
+
 class AppRouter extends Component {
   render() {
     if (localStorage.getItem("jwtToken") != null)

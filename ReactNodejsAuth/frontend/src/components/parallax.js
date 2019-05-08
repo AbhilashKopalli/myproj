@@ -25,7 +25,7 @@ const Images = () => {
                 <div style={{ color: "#777", backgroundColor: "white", textAlign: "center", padding: "50px 80px", textAlign: "justify" }}>
                 <StyleRoot>
                             <div className="test" style={styles.bounce}>
-                            <h3 style={{ textAlign: "center" }}>Malware Detection Using Machine Language</h3>
+                            <h3 style={{ textAlign: "center" }}>Malware Classification Using Machine Language</h3>
                             </div>  </StyleRoot>
                     {/* <p> Hi, this is testing </p> */}
 

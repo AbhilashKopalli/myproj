@@ -37,13 +37,13 @@ const dashboardRoutes = [
     component: DashboardPage,
     layout: "/admin"
   },
-  {
-    path: "/user",
-    name: "User Profile",
-    icon: Person,
-    component: UserProfile,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/user",
+  //   name: "User Profile",
+  //   icon: Person,
+  //   component: UserProfile,
+  //   layout: "/admin"
+  // },
   {
     path: "/file-upload",
     name: "File Upload",
@@ -53,7 +53,7 @@ const dashboardRoutes = [
   },
   {
     path: "/history",
-    name: "Upload History",
+    name: "Malware Info",
     icon: BubbleChart,
     component: Icons,
     layout: "/admin"

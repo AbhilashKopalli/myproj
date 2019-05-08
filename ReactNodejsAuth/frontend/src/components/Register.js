@@ -7,9 +7,7 @@ import classnames from 'classnames';
 import Button from "@material-ui/core/Button";
 import  { ToastContainer,toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import GoogleLogin from 'react-google-login';
 import ReactDOM from 'react-dom';
-import FacebookLogin from 'react-facebook-login';
 
 class Register extends Component {
 
@@ -30,9 +28,6 @@ class Register extends Component {
     handleClick() {
         // e.preventDefault();
         console.log('The link was clicked.');
-        toast("Wow so easy !");
-        toast("Hi there !", {position: toast.POSITION.TOP_LEFT});
-        toast("Hello", { autoClose: false })
     }
 
     handleInputChange(e) {
@@ -84,6 +79,7 @@ class Register extends Component {
           
         return(
         <div className="container" style={{ marginTop: '50px', width: '700px'}}>
+        {/* <h4>Sign up to know more: </h4> */}
             <h2 style={{marginBottom: '40px'}}>Registration</h2>
             <form onSubmit={ this.handleSubmit }>
                 <div className="form-group">
@@ -102,7 +98,7 @@ class Register extends Component {
                 <div className="form-group">
                     <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="username"
                     className={classnames('form-control form-control-lg', {
                         'is-invalid': errors.email
                     })}

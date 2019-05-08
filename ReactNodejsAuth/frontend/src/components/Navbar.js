@@ -26,6 +26,9 @@ class Navbar extends Component {
         )
       const guestLinks = (
         <ul className="navbar-nav ml-auto">
+             <li className="nav-item">
+                <Link className="nav-link" to="/admin/file-upload"><b>File Upload</b></Link>
+            </li>
             <li className="nav-item">
                 <Link className="nav-link" to="/register">Sign Up</Link>
             </li>
@@ -36,7 +39,7 @@ class Navbar extends Component {
       )
         return(
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <Link className="navbar-brand" to="/">Malware detection</Link>
+                <Link className="navbar-brand" to="/">Malware Classifier</Link>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     {isAuthenticated ? authLinks : guestLinks}
                 </div>

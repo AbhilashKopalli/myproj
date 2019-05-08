@@ -110,7 +110,8 @@ class Dashboard extends React.Component {
         <GridContainer>
           <GridItem xs={17} sm={17} md={6}>
           <Card>
-            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;KNN Model Accuracy</h4>
+            <br/>
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;KNN Model Accuracy</h4>
                 <img  src={knn_acc}  />
               {/* <CardFooter chart> */}
                 {/* <div className={classes.stats}>
@@ -121,7 +122,8 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={15} sm={15} md={6}>
  <Card>
-            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;KNN Confusion Matrix</h4>
+   <br />
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;KNN Confusion Matrix</h4>
                 <br /><img  src={knn_con}  />
               {/* <CardFooter chart> */}
                 {/* <div className={classes.stats}>
@@ -148,7 +150,8 @@ class Dashboard extends React.Component {
         <GridContainer>
           <GridItem xs={17} sm={17} md={6}>
           <Card>
-    <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;Logistic Regression Model Accuracy</h4>
+            <br />
+    <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;Logistic Regression Model Accuracy</h4>
 
                 <img  src={log_acc}  />
               {/* <CardFooter chart> */}
@@ -160,7 +163,8 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={15} sm={15} md={6}>
  <Card>
-            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;Logistic Regression Confusion Matrix</h4>
+   <br />
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;Logistic Regression Confusion Matrix</h4>
               <img  src={log_con}  />
               {/* <CardFooter chart> */}
                 {/* <div className={classes.stats}>
@@ -188,7 +192,8 @@ class Dashboard extends React.Component {
 
           <GridItem xs={17} sm={17} md={6}>
           <Card>
-            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Random Forest Model Accuracy</h4>
+            <br />
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Random Forest Model Accuracy</h4>
                 <img  src={random_acc}  />
  
               {/* <CardFooter chart> */}
@@ -200,7 +205,8 @@ class Dashboard extends React.Component {
           </GridItem>
           <GridItem xs={15} sm={15} md={6}>
  <Card>
-            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;Random Forest Precision Matrix</h4>
+   <br />
+            <h4 className={classes.cardTitle}> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Random Forest Precision Matrix</h4>
                 <img  src={random_prec}  />
 
               {/* <CardFooter chart> */}
