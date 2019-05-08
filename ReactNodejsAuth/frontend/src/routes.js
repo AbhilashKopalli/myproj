@@ -65,13 +65,6 @@ const dashboardRoutes = [
   //   component: NotificationsPage,
   //   layout: "/admin"
   // },
-  {
-    path: "/signout",
-    name: "signout",
-    icon: logoutUser,
-    component: NotificationsPage,
-    layout: "/admin"
-  }
 ];
 
 export default dashboardRoutes;

@@ -28,7 +28,7 @@ if (localStorage.jwtToken) {
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{backgroundColor: "#eee"}}>
         <AppRouter />
         <ToastContainer
           position="bottom-right"

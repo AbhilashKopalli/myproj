@@ -7,11 +7,14 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Hidden from "@material-ui/core/Hidden";
+import Exit from "@material-ui/icons/ExitToApp";
 // @material-ui/icons
 import Menu from "@material-ui/icons/Menu";
 // core components
 import Button from "../CustomButtons/Button.jsx";
 
+import { logoutUser } from '../../actions/authentication';
+import store from '../../store';
 import headerStyle from "../../assets/jss/material-dashboard-react/components/headerStyle.jsx";
 
 function Header({ ...props }) {
@@ -36,6 +39,16 @@ function Header({ ...props }) {
           {/* Here we create navbar brand, based on route name */}
           <Button color="transparent" href="#" className={classes.title}>
             {makeBrand()}
+          </Button>
+        </div>
+        <div className={classes.flex} style={{ flex: "inherit" }}>
+          {/* Here we create navbar brand, based on route name */}
+          <Button color="transparent" href="#" className={classes.title} onClick={() => {
+            store.dispatch(logoutUser());
+            window.location.href = '/';
+          }}>
+            <Exit />
+            Sign out
           </Button>
         </div>
         <Hidden mdUp implementation="css">
