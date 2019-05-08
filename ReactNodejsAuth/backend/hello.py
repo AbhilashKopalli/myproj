@@ -199,7 +199,7 @@ predict_y = model.predict(Final_prep_data)
 
 x = {
 
-    "file": "This file belongs to Malware Class" + " " + str(predict_y[0])
+    "file": "" + str(predict_y[0])
 
 }
 

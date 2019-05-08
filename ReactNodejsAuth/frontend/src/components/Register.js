@@ -61,19 +61,14 @@ class Register extends Component {
                 errors: nextProps.errors
             });
         }
-        toast("Wow so easy !");
     }
 
     componentDidMount() {
-        console.log("hello")
-        toast("Wow so easy !");
+
         if(this.props.auth.isAuthenticated) {
             this.props.history.push('/');
         }
 
-        toast("Wow so easy !");
-        toast("Hi there !", {position: toast.POSITION.TOP_LEFT});
-        toast("Hello", { autoClose: false })
     }
 
     render() {
@@ -153,19 +148,6 @@ class Register extends Component {
             {/* <div> <button onLoad={this.handleClick}>My Awesome Button</button> <ToastContainer /> </div> */}
             <div style={{position: "absolute", bottom: "5px", right: "5px",color: "black",textAlign: "right"}}>
     Spring 2019, CMPE-272 Team 21 </div>
-    <FacebookLogin
-    appId="602405340241247"
-    autoLoad={true}
-    fields="name,email,picture"
-    // onClick={componentClicked}
-    callback={responseFacebook} />,
-      <GoogleLogin
-    clientId="1068075770755-cdqdnjh9to2dqs0a5t2qpnrlphlhbcn9.apps.googleusercontent.com"
-    buttonText="Login"
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-  />,
 
         </div>
         )

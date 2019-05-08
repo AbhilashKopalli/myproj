@@ -15,7 +15,7 @@ import CardFooter from "../../components/Card/CardFooter.jsx";
 
 import avatar from "../../assets/img/faces/marc.jpg";
 
-import store from '../../action/store';
+import store from '../../store';
 import { getUserInfo } from '../../actions/authentication';
 
 const styles = {
